@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B600A8" />
+      <stop offset="100%" stop-color="#7B61FF" />
+    </linearGradient>
+  </defs>
+  <!-- Background Rounded Rectangle -->
+  <rect width="512" height="512" rx="128" fill="#0C0C0C" />
+  <!-- Shield and Coding symbols -->
+  <g fill="none" stroke="url(#grad)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Shield Outline -->
+    <path d="M160 140 L256 90 L352 140 V260 C352 350 256 410 256 410 C256 410 160 350 160 260 V140 Z" />
+    <!-- Coding Command Prompt >_ inside the shield -->
+    <path d="M210 200 L250 230 L210 260" stroke="#D7E2EA" stroke-width="28" />
+    <line x1="265" y1="260" x2="300" y2="260" stroke="#D7E2EA" stroke-width="28" />
+  </g>
+</svg>
