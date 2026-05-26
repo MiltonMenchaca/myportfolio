@@ -8,9 +8,16 @@ interface Certificate {
   title: string;
   issuer: string;
   isAws?: boolean;
+  url?: string;
 }
 
 const CERTIFICATES: Certificate[] = [
+  {
+    img: img('/htb-bug-bounty.png'),
+    title: 'Bug Bounty Hunter',
+    issuer: 'Hack The Box',
+    url: 'https://academy.hackthebox.com/achievement/2283240/path/17',
+  },
   {
     img: img('/certificado.jpg'),
     title: 'Full Stack Web Development Bootcamp',
@@ -294,9 +301,19 @@ export const CertificatesSection: React.FC = () => {
               alt={activeCert.title}
               className="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 transition-transform duration-500 hover:scale-[1.08] cursor-zoom-in"
             />
-            <div className="mt-4 text-center text-white">
+            <div className="mt-4 text-center text-white flex flex-col items-center gap-2">
               <h3 className="font-bold text-lg leading-tight">{activeCert.title}</h3>
-              <p className="text-xs uppercase tracking-widest text-white/55 mt-1 font-medium">{activeCert.issuer}</p>
+              <p className="text-xs uppercase tracking-widest text-white/55 font-medium">{activeCert.issuer}</p>
+              {activeCert.url && (
+                <a
+                  href={activeCert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/25 transition-all duration-300 text-white cursor-pointer"
+                >
+                  Verify Credential ↗
+                </a>
+              )}
             </div>
           </div>
         </div>

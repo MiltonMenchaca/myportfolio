@@ -36,7 +36,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ''
   // Track scroll position of the paragraph element
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 0.8', 'end 0.2'],
+    offset: ['start 0.85', 'start 0.45'],
   });
 
   // Split string into characters, preserving spaces as single elements
