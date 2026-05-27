@@ -1,34 +1,10 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface AnimatedTextProps {
   text: string;
   className?: string;
 }
-
-interface CharacterProps {
-  char: string;
-  progress: MotionValue<number>;
-  range: [number, number];
-}
-
-const Character: React.FC<CharacterProps> = ({ char, progress, range }) => {
-  const opacity = useTransform(progress, range, [0.2, 1]);
-
-  return (
-    <span className="relative inline-block">
-      {/* Invisible placeholder to maintain layout flow and spacing */}
-      <span className="opacity-0">{char}</span>
-      {/* Absolute positioned animated span that fades in */}
-      <motion.span
-        style={{ opacity }}
-        className="absolute left-0 top-0 select-none"
-      >
-        {char}
-      </motion.span>
-    </span>
-  );
-};
 
 export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = '' }) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
@@ -39,40 +15,29 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ''
     offset: ['start 0.85', 'start 0.45'],
   });
 
-  // Split string into characters, preserving spaces as single elements
-  const words = text.split(' ');
+  // Smoothly interpolate the progress of the gradient reveal
+  const gradientStyle = useTransform(scrollYProgress, (progress) => {
+    // We map the 0-1 progress to 0-100% of the gradient, with a smooth 20% transition zone
+    const p1 = Math.max(0, progress * 120 - 20);
+    const p2 = Math.min(100, progress * 120);
+    return `linear-gradient(to bottom, #D7E2EA ${p1}%, rgba(215, 226, 234, 0.2) ${p2}%)`;
+  });
 
   return (
-    <p ref={containerRef} className={className}>
-      {words.map((word, wordIndex) => {
-        const wordChars = word.split('');
-        
-        // Calculate dynamic global character offset index for this word
-        const prevWordsLength = words.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0);
-
-        return (
-          <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em]">
-            {wordChars.map((char, charIndex) => {
-              const globalIndex = prevWordsLength + charIndex;
-              const totalChars = text.length;
-              
-              // Calculate scroll trigger boundaries for this specific character
-              const start = globalIndex / totalChars;
-              const end = Math.min(1, start + 0.1); // add slight transition ease overlap
-
-              return (
-                <Character
-                  key={charIndex}
-                  char={char}
-                  progress={scrollYProgress}
-                  range={[start, end]}
-                />
-              );
-            })}
-          </span>
-        );
-      })}
-    </p>
+    <motion.p
+      ref={containerRef}
+      className={`${className} select-none`}
+      style={{
+        backgroundImage: gradientStyle,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        color: 'transparent',
+        display: 'inline-block', // keeps the background clip container tight around text flow
+      }}
+    >
+      {text}
+    </motion.p>
   );
 };
 
