@@ -115,7 +115,7 @@ export const ContactFooter: React.FC = () => {
             <Github size={20} />
           </a>
           <a
-            href="https://www.linkedin.com/in/milton-m-a9933a294/"
+            href="https://www.linkedin.com/in/milton-emilio-menchaca-manero-349519398/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 rounded-full border border-[#D7E2EA]/10 bg-[#141414]/50 flex items-center justify-center hover:bg-[#D7E2EA]/10 transition-all duration-300"
@@ -123,7 +123,7 @@ export const ContactFooter: React.FC = () => {
             <Linkedin size={20} />
           </a>
           <a
-            href="mailto:miltonemilio@hotmail.com"
+            href="mailto:menchacamiltone@gmail.com"
             className="w-12 h-12 rounded-full border border-[#D7E2EA]/10 bg-[#141414]/50 flex items-center justify-center hover:bg-[#D7E2EA]/10 transition-all duration-300"
           >
             <Mail size={20} />

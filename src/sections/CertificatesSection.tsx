@@ -200,13 +200,14 @@ export const CertificatesSection: React.FC = () => {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full">
+        <div className="flex flex-wrap justify-center gap-5 w-full">
           {regularCerts.map((cert, index) => (
             <FadeIn
               key={index}
               delay={index * 0.07}
               y={30}
               duration={0.7}
+              className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]"
             >
               <div
                 className={`group relative rounded-[24px] overflow-hidden cursor-pointer transition-all duration-500 bg-[#0C0C0C] border-2 border-[#0C0C0C]/10 ${
@@ -258,7 +259,7 @@ export const CertificatesSection: React.FC = () => {
               className="font-black text-[#0C0C0C]"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
             >
-              10
+              11
             </span>
             <div className="flex flex-col">
               <span className="text-xs uppercase tracking-widest text-[#0C0C0C]/50 font-medium">Certifications</span>

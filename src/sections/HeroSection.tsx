@@ -11,25 +11,8 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#0C0C0C] select-none text-[#D7E2EA]">
-      {/* Navbar */}
-      <FadeIn delay={0} y={-20} duration={0.8}>
-        <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 w-full z-20 relative">
-          <div className="font-bold text-[#D7E2EA] tracking-wider uppercase text-sm md:text-lg lg:text-[1.4rem]">
-            Milton M.
-          </div>
-          <div className="flex gap-4 sm:gap-6 md:gap-10">
-            {['About', 'Experience', 'Projects', 'Contact'].map((link) => (
-              <button
-                key={link}
-                onClick={() => scrollToSection(link)}
-                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200"
-              >
-                {link}
-              </button>
-            ))}
-          </div>
-        </nav>
-      </FadeIn>
+      {/* top spacing so hero content clears the global FloatingNav */}
+      <div className="pt-20" />
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-8 px-6 md:px-10 py-12 lg:py-0 max-w-7xl mx-auto w-full z-10">

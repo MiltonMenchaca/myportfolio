@@ -6,10 +6,14 @@ import ServicesSection from './sections/ServicesSection';
 import ProjectsSection from './sections/ProjectsSection';
 import CertificatesSection from './sections/CertificatesSection';
 import ContactFooter from './sections/ContactFooter';
+import FloatingNav from './components/FloatingNav';
 
 function App() {
   return (
     <main className="relative min-h-screen bg-[#0C0C0C] text-[#D7E2EA] font-kanit overflow-x-clip select-none">
+      {/* Global floating pill navbar */}
+      <FloatingNav />
+
       {/* Hero Section */}
       <HeroSection />
 
