@@ -8,7 +8,7 @@ export const AboutSection: React.FC = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const bioText = "Full Stack Developer & Cybersecurity Specialist. I combine advanced software engineering (React, Node.js, Django) with offensive security expertise to build resilient, scalable applications. My background in malware research and network security allows me to architect solutions that are functional, user-centric, and secure by design. Let's build something incredible together!";
+  const bioText = "Software Development Engineer & Full Stack Dev. I combine advanced software engineering (React, Node.js, Django) with offensive security expertise to build resilient, scalable applications. My background in malware research and network security allows me to architect solutions that are functional, user-centric, and secure by design. Let's build something incredible together!";
 
   return (
     <section

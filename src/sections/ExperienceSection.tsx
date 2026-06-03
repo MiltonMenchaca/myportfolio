@@ -76,7 +76,7 @@ const EXPERIENCES: Experience[] = [
     accent: '#B600A8',
   },
   {
-    role: 'Freelance Full Stack Developer',
+    role: 'Freelance Software Developer & Full Stack Dev',
     company: 'Remote',
     period: 'Sep 2024 – Present',
     logo: img('/turing.png'),

@@ -33,7 +33,7 @@ export const HeroSection: React.FC = () => {
           
           <FadeIn delay={0.3} y={30} duration={0.8}>
             <p className="text-white/70 font-light uppercase tracking-wide leading-relaxed text-sm sm:text-base md:text-lg max-w-md lg:max-w-lg mb-8">
-              A Full Stack Developer & Cybersecurity Specialist crafting secure, resilient, and performant web & apps.
+              A Software Development Engineer, Full Stack Dev & Cybersecurity Specialist crafting secure, resilient, and performant web & apps.
             </p>
           </FadeIn>
           
