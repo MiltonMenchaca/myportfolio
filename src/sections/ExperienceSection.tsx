@@ -2,7 +2,7 @@ import React from 'react';
 import FadeIn from '../components/FadeIn';
 import { img } from '../utils/getImageUrl';
 
-interface Experience {
+interface Position {
   role: string;
   company: string;
   period: string;
@@ -12,34 +12,55 @@ interface Experience {
   accent?: string;
 }
 
+interface Experience {
+  isGroup?: boolean;
+  groupName?: string;
+  positions?: Position[];
+  role?: string;
+  company?: string;
+  period?: string;
+  logo: string;
+  url?: string;
+  bullets?: string[];
+  accent?: string;
+}
+
 const EXPERIENCES: Experience[] = [
   {
-    role: 'Backend Developer',
-    company: 'Atura',
-    period: '6 months',
+    isGroup: true,
+    groupName: 'Grupo Same',
     logo: img('/gruposame.png'),
-    url: 'https://www.cumulo.com.mx/',
-    bullets: [
-      'Development of full REST APIs with PHP / Laravel and Node.js',
-      'Technical documentation of endpoints with Swagger / Postman',
-      'MySQL database integration, schema design, and query optimization',
-      'Authentication and authorization using JWT and OAuth2',
-      'Deployment and maintenance of environments on Linux servers',
-    ],
-    accent: '#7B61FF',
-  },
-  {
-    role: 'Network and Application Security Specialist',
-    company: 'Grupo Same',
-    period: 'Present · Recently Promoted',
-    logo: img('/cumulo.png'),
-    url: 'https://www.gruposame.mx/',
-    bullets: [
-      'Creation and configuration of Linux servers optimized for secure web deployment',
-      'Conducting continuous penetration testing (pentesting) on web applications',
-      'Proactive monitoring and rapid incident response to security events',
-    ],
     accent: '#00B4D8',
+    positions: [
+      {
+        role: 'Network and Application Security Specialist',
+        company: 'Cúmulo',
+        period: 'Present · Recently Promoted',
+        logo: img('/cumulo.png'),
+        url: 'https://www.cumulo.com.mx/',
+        bullets: [
+          'Creation and configuration of Linux servers optimized for secure web deployment',
+          'Conducting continuous penetration testing (pentesting) on web applications',
+          'Proactive monitoring and rapid incident response to security events',
+        ],
+        accent: '#00B4D8',
+      },
+      {
+        role: 'Backend Developer',
+        company: 'Atura',
+        period: '6 months',
+        logo: img('/gruposame.png'),
+        url: 'https://www.gruposame.mx/',
+        bullets: [
+          'Development of full REST APIs with PHP / Laravel and Node.js',
+          'Technical documentation of endpoints with Swagger / Postman',
+          'MySQL database integration, schema design, and query optimization',
+          'Authentication and authorization using JWT and OAuth2',
+          'Deployment and maintenance of environments on Linux servers',
+        ],
+        accent: '#7B61FF',
+      },
+    ],
   },
   {
     role: 'Developer & Security Researcher',
@@ -116,75 +137,163 @@ export const ExperienceSection: React.FC = () => {
         </FadeIn>
 
         {/* ── TIMELINE ── */}
-        <div className="relative flex flex-col gap-6 mb-24">
+        <div className="relative flex flex-col gap-8 mb-24">
           {/* Vertical line */}
           <div className="absolute left-[70px] sm:left-[95px] top-0 bottom-0 w-px bg-[#0C0C0C]/8 hidden sm:block" />
 
           {EXPERIENCES.map((exp, i) => (
             <FadeIn key={i} delay={i * 0.1} y={30} duration={0.7}>
               <div className="group flex gap-5 sm:gap-7 items-start">
-                {/* Logo card — wider & bigger */}
-                <div
-                  className="relative z-10 flex-shrink-0 w-[140px] h-[88px] sm:w-[190px] sm:h-[120px] rounded-xl bg-white flex items-center justify-center border shadow-sm transition-all duration-400 overflow-hidden"
-                  style={{ borderColor: `${exp.accent}33` }}
-                >
-                  <img
-                    src={exp.logo}
-                    alt={exp.company}
-                    className="w-full h-full object-cover object-top"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.opacity = '0';
-                    }}
-                  />
-                  {/* coloured ring on hover */}
+                
+                {/* Logo column — wider & bigger */}
+                <div className="flex flex-col items-center flex-shrink-0 w-[140px] sm:w-[190px]">
                   <div
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{ boxShadow: `0 0 0 2px ${exp.accent}` }}
-                  />
+                    className="relative z-10 w-[140px] h-[88px] sm:w-[190px] sm:h-[120px] rounded-xl bg-white flex items-center justify-center border shadow-sm transition-all duration-400 overflow-hidden"
+                    style={{ borderColor: `${exp.accent || '#000000'}33` }}
+                  >
+                    <img
+                      src={exp.logo}
+                      alt={exp.isGroup ? exp.groupName : exp.company}
+                      className="w-full h-full object-cover object-top"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.opacity = '0';
+                      }}
+                    />
+                    {/* coloured ring on hover */}
+                    <div
+                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{ boxShadow: `0 0 0 2px ${exp.accent || '#000000'}` }}
+                    />
+                  </div>
+                  
+                  {/* Outside label for company group */}
+                  {exp.isGroup && (
+                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] text-[#0C0C0C]/50 mt-3 text-center">
+                      {exp.groupName}
+                    </span>
+                  )}
                 </div>
 
                 {/* Content */}
-                <div
-                  className="flex-1 rounded-2xl border bg-[#0C0C0C]/[0.02] p-5 sm:p-6 transition-all duration-300 group-hover:shadow-md"
-                  style={{ borderColor: `${exp.accent}22` }}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3 mb-2">
-                    <h3 className="font-bold text-[#0C0C0C] text-base sm:text-lg leading-tight">
-                      {exp.role}
-                    </h3>
-                    <span
-                      className="text-[10px] uppercase tracking-widest font-semibold whitespace-nowrap"
-                      style={{ color: exp.accent }}
-                    >
-                      {exp.period}
-                    </span>
-                  </div>
+                {exp.isGroup ? (
+                  /* Glassmorphism container for grouped jobs (representing 'vidrio') */
+                  <div
+                    className="flex-1 rounded-2xl border bg-slate-50/30 backdrop-blur-md p-5 sm:p-7 shadow-[0_8px_30px_rgba(0,0,0,0.015)] transition-all duration-300 hover:shadow-lg hover:bg-slate-50/50"
+                    style={{ borderColor: `${exp.accent}44` }}
+                  >
+                    {/* Header label above the grouped positions */}
+                    <div className="mb-6 flex items-center gap-2">
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#0C0C0C]/35">
+                        Grupo Same Positions
+                      </span>
+                      <span className="h-px flex-1 bg-[#0C0C0C]/10" />
+                    </div>
 
-                  {exp.url ? (
-                    <a
-                      href={exp.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium hover:underline transition-opacity"
-                      style={{ color: exp.accent }}
-                    >
-                      {exp.company} ↗
-                    </a>
-                  ) : (
-                    <p className="text-sm font-medium text-[#0C0C0C]/50">{exp.company}</p>
-                  )}
+                    <div className="flex flex-col gap-8">
+                      {exp.positions?.map((pos, pi) => (
+                        <div key={pi} className="relative">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3 mb-2">
+                            <h3 className="font-bold text-[#0C0C0C] text-base sm:text-lg leading-tight">
+                              {pos.role}
+                            </h3>
+                            <span
+                              className="text-[10px] uppercase tracking-widest font-semibold whitespace-nowrap"
+                              style={{ color: pos.accent }}
+                            >
+                              {pos.period}
+                            </span>
+                          </div>
 
-                  {exp.bullets && (
-                    <ul className="mt-3 space-y-1">
-                      {exp.bullets.map((b, bi) => (
-                        <li key={bi} className="flex items-start gap-2 text-sm text-[#0C0C0C]/65">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: exp.accent }} />
-                          {b}
-                        </li>
+                          <div className="flex items-center gap-2 mb-3">
+                            {pos.logo && (
+                              <img
+                                src={pos.logo}
+                                alt={pos.company}
+                                className="h-4 sm:h-5 w-auto object-contain rounded"
+                              />
+                            )}
+                            {pos.url ? (
+                              <a
+                                href={pos.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm font-semibold hover:underline"
+                                style={{ color: pos.accent }}
+                              >
+                                {pos.company} ↗
+                              </a>
+                            ) : (
+                              <span className="text-sm font-semibold text-[#0C0C0C]/60">
+                                {pos.company}
+                              </span>
+                            )}
+                          </div>
+
+                          {pos.bullets && (
+                            <ul className="space-y-1">
+                              {pos.bullets.map((b, bi) => (
+                                <li key={bi} className="flex items-start gap-2 text-sm text-[#0C0C0C]/65">
+                                  <span
+                                    className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                                    style={{ background: pos.accent }}
+                                  />
+                                  {b}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+
+                          {pi < (exp.positions?.length || 0) - 1 && (
+                            <div className="border-t border-[#0C0C0C]/10 mt-8" />
+                          )}
+                        </div>
                       ))}
-                    </ul>
-                  )}
-                </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Standard item container */
+                  <div
+                    className="flex-1 rounded-2xl border bg-[#0C0C0C]/[0.02] p-5 sm:p-6 transition-all duration-300 group-hover:shadow-md"
+                    style={{ borderColor: `${exp.accent}22` }}
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3 mb-2">
+                      <h3 className="font-bold text-[#0C0C0C] text-base sm:text-lg leading-tight">
+                        {exp.role}
+                      </h3>
+                      <span
+                        className="text-[10px] uppercase tracking-widest font-semibold whitespace-nowrap"
+                        style={{ color: exp.accent }}
+                      >
+                        {exp.period}
+                      </span>
+                    </div>
+
+                    {exp.url ? (
+                      <a
+                        href={exp.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium hover:underline transition-opacity"
+                        style={{ color: exp.accent }}
+                      >
+                        {exp.company} ↗
+                      </a>
+                    ) : (
+                      <p className="text-sm font-medium text-[#0C0C0C]/50">{exp.company}</p>
+                    )}
+
+                    {exp.bullets && (
+                      <ul className="mt-3 space-y-1">
+                        {exp.bullets.map((b, bi) => (
+                          <li key={bi} className="flex items-start gap-2 text-sm text-[#0C0C0C]/65">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: exp.accent }} />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
               </div>
             </FadeIn>
           ))}
@@ -235,7 +344,7 @@ export const ExperienceSection: React.FC = () => {
                 <div className="flex flex-wrap gap-4 items-center">
                   {[
                     { src: img('/gruposame.png'), alt: 'Grupo Same' },
-                    { src: img('/cumulo.png'), alt: 'Atura' },
+                    { src: img('/cumulo.png'), alt: 'Cúmulo' },
                     { src: img('/ssetco-logo.png'), alt: 'Ssetco' },
                     { src: img('/0x12darkdev.png'), alt: '0x12 Dark Dev' },
                     { src: img('/turing.png'), alt: 'Turing' },
