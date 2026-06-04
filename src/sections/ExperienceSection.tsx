@@ -50,7 +50,7 @@ const EXPERIENCES: Experience[] = [
         company: 'Atura',
         period: '6 months',
         logo: img('/gruposame.png'),
-        url: 'https://www.gruposame.mx/',
+        url: 'https://www.atura.mx/',
         bullets: [
           'Development of full REST APIs with PHP / Laravel and Node.js',
           'Technical documentation of endpoints with Swagger / Postman',
