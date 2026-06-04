@@ -69,9 +69,10 @@ const EXPERIENCES: Experience[] = [
     logo: img('/0x12darkdev.png'),
     url: 'https://0x12darkdev.net/',
     bullets: [
-      'Development of educational malware and advanced offensive techniques',
-      'Creation of educational cybersecurity content for the community',
+      'Development of custom malware and advanced offensive techniques for research purposes',
+      'Design and implementation of custom C2 agents integrated with the Mythic C2 framework',
       'Research on evasion techniques for Windows and Android operating systems',
+      'Creation of educational cybersecurity content for the community',
     ],
     accent: '#B600A8',
   },
