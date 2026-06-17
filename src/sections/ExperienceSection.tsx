@@ -27,6 +27,17 @@ interface Experience {
 
 const EXPERIENCES: Experience[] = [
   {
+    role: 'CEO, Founder & Pentester',
+    company: 'Threatix',
+    period: 'Since Jun 2026',
+    logo: img('/threatix.png'),
+    bullets: [
+      'Offensive cybersecurity specialist conducting penetration testing (pentesting) and vulnerability analysis',
+      'Advanced malware development (MalDev) and research on evasion techniques',
+    ],
+    accent: '#E63946',
+  },
+  {
     isGroup: true,
     groupName: 'Grupo Same',
     logo: img('/gruposame.png'),
@@ -344,6 +355,7 @@ export const ExperienceSection: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap gap-4 items-center">
                   {[
+                    { src: img('/threatix.png'), alt: 'Threatix' },
                     { src: img('/gruposame.png'), alt: 'Grupo Same' },
                     { src: img('/cumulo.png'), alt: 'Cúmulo' },
                     { src: img('/ssetco-logo.png'), alt: 'Ssetco' },

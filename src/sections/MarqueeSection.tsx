@@ -5,7 +5,7 @@ const IMAGES = [
   img("/INCTM.png"),
   img("/ssetco.png"),
   img("/blog.png"),
-  img("/mediummurak.png"),
+  img("/threatix.png"),
 ];
 
 // Replicated and offset to show Milton's 4 projects scrolling infinitely
