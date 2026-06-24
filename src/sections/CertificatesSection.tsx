@@ -13,6 +13,12 @@ interface Certificate {
 
 const CERTIFICATES: Certificate[] = [
   {
+    img: img('/pentester-path.png'),
+    title: 'Penetration Tester',
+    issuer: 'Hack The Box',
+    url: 'https://academy.hackthebox.com/achievement/2283240/path/16',
+  },
+  {
     img: img('/htb-bug-bounty.png'),
     title: 'Bug Bounty Hunter',
     issuer: 'Hack The Box',
@@ -266,7 +272,7 @@ export const CertificatesSection: React.FC = () => {
               className="font-black text-[#0C0C0C]"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
             >
-              12
+              13
             </span>
             <div className="flex flex-col">
               <span className="text-xs uppercase tracking-widest text-[#0C0C0C]/50 font-medium">Certifications</span>

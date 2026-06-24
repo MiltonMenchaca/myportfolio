@@ -31,6 +31,7 @@ const EXPERIENCES: Experience[] = [
     company: 'Threatix',
     period: 'Since Jun 2026',
     logo: img('/threatix.png'),
+    url: 'https://threatix.com.mx/',
     bullets: [
       'Offensive cybersecurity specialist conducting penetration testing (pentesting) and vulnerability analysis',
       'Advanced malware development (MalDev) and research on evasion techniques',
