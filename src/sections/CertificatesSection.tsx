@@ -82,6 +82,16 @@ const CERTIFICATES: Certificate[] = [
     issuer: 'Amazon Web Services',
     isAws: true,
   },
+  {
+    img: img('/devops.png'),
+    title: 'DevOps Methodology',
+    issuer: 'Universidad Tecmilenio',
+  },
+  {
+    img: img('/Big data.png'),
+    title: 'Big Data Technologies',
+    issuer: 'Universidad Tecmilenio',
+  },
 ];
 
 
@@ -272,7 +282,7 @@ export const CertificatesSection: React.FC = () => {
               className="font-black text-[#0C0C0C]"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
             >
-              13
+              15
             </span>
             <div className="flex flex-col">
               <span className="text-xs uppercase tracking-widest text-[#0C0C0C]/50 font-medium">Certifications</span>
