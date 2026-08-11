@@ -83,6 +83,12 @@ const CERTIFICATES: Certificate[] = [
     isAws: true,
   },
   {
+    img: img('/ai-red-team.png'),
+    title: 'AI Red Teamer',
+    issuer: 'Hack The Box',
+    url: 'https://academy.hackthebox.com/achievement/2283240/path/418',
+  },
+  {
     img: img('/devops.png'),
     title: 'DevOps Methodology',
     issuer: 'Universidad Tecmilenio',
@@ -282,7 +288,7 @@ export const CertificatesSection: React.FC = () => {
               className="font-black text-[#0C0C0C]"
               style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
             >
-              15
+              16
             </span>
             <div className="flex flex-col">
               <span className="text-xs uppercase tracking-widest text-[#0C0C0C]/50 font-medium">Certifications</span>
