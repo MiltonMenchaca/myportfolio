@@ -31,6 +31,12 @@ const CERTIFICATES: Certificate[] = [
     url: 'https://academy.hackthebox.com/achievement/2283240/path/390',
   },
   {
+    img: img('/ai-red-team.png'),
+    title: 'AI Red Teamer',
+    issuer: 'Hack The Box',
+    url: 'https://academy.hackthebox.com/achievement/2283240/path/418',
+  },
+  {
     img: img('/certificado.jpg'),
     title: 'Full Stack Web Development Bootcamp',
     issuer: 'Bootcamp',
@@ -81,12 +87,6 @@ const CERTIFICATES: Certificate[] = [
     title: 'AWS Academy Graduate — Cloud Foundations',
     issuer: 'Amazon Web Services',
     isAws: true,
-  },
-  {
-    img: img('/ai-red-team.png'),
-    title: 'AI Red Teamer',
-    issuer: 'Hack The Box',
-    url: 'https://academy.hackthebox.com/achievement/2283240/path/418',
   },
   {
     img: img('/devops.png'),
